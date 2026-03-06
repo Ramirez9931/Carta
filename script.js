@@ -76,8 +76,13 @@ let tamañoCorazon = esMovil ? 12 : 26;
 /* CALCULO PARA CENTRAR */
 
 let anchoTexto = texto[0].length * espacioX;
-let startX = (window.innerWidth - anchoTexto) / 2 - (esMovil ? 30 : 0);
-let startY = window.innerHeight / 2 - (esMovil ? 80 : 120);
+
+let startX = (window.innerWidth - anchoTexto) / 2;
+if(esMovil){
+startX -= 90;
+}
+
+let startY = window.innerHeight / 2 - (esMovil ? 70 : 120);
 
 for(let y=0;y<texto.length;y++){
 
