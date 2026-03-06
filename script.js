@@ -49,13 +49,17 @@ ayudarte y mucho más día a día 🌷💖
 </p>
 `;
 
-/* detectar teléfono */
+/* DETECTAR SI ES TELEFONO */
 
 let esTelefono = window.innerWidth < 600;
 
-/* texto con corazones */
+/* TEXTO CON CORAZONES */
 
-const texto = esTelefono ? [
+let texto;
+
+if(esTelefono){
+
+texto = [
 
 "111 1111",
 " 1  1   ",
@@ -71,7 +75,11 @@ const texto = esTelefono ? [
 "1   1  1   1 1    ",
 "1   1  1   1  1111"
 
-] : [
+];
+
+}else{
+
+texto = [
 
 "111 1111     111   1   1  1111",
 " 1  1       1   1  11 11 1    1",
@@ -81,22 +89,23 @@ const texto = esTelefono ? [
 
 ];
 
-/* escala adaptable */
+}
 
-let escala = Math.min(window.innerWidth / 900, 1);
+/* TAMAÑOS */
 
-let espacioX = 45 * escala;
-let espacioY = 50 * escala;
+let espacioX = esTelefono ? 20 : 40;
+let espacioY = esTelefono ? 25 : 45;
+let tamañoCorazon = esTelefono ? 22 : 40;
 
-let tamañoCorazon = 50 * escala;
+/* CALCULAR CENTRO */
 
-/* centrado automático */
+let ancho = texto[0].length * espacioX;
+let alto = texto.length * espacioY;
 
-let anchoTexto = texto[0].length * espacioX;
-let altoTexto = texto.length * espacioY;
+let startX = (window.innerWidth - ancho) / 2;
+let startY = (window.innerHeight - alto) / 2;
 
-let startX = (window.innerWidth - anchoTexto) / 2;
-let startY = (window.innerHeight - altoTexto) / 2;
+/* CREAR CORAZONES */
 
 for(let y=0;y<texto.length;y++){
 
@@ -137,26 +146,15 @@ let tulipan = document.createElement("div");
 tulipan.className="tulipan";
 tulipan.innerHTML="🌷";
 
-/* posición horizontal */
-
 tulipan.style.left = Math.random()*100 + "vw";
-
-/* posición vertical */
-
 tulipan.style.top = Math.random()*100 + "vh";
-
-/* tamaño */
 
 let size = 20 + Math.random()*30;
 tulipan.style.fontSize = size + "px";
 
-/* velocidad */
-
 tulipan.style.animationDuration = (6 + Math.random()*6) + "s";
 
 document.body.appendChild(tulipan);
-
-/* eliminar */
 
 setTimeout(()=>{
 tulipan.remove();
@@ -164,13 +162,13 @@ tulipan.remove();
 
 }
 
-/* muchos tulipanes al inicio */
+/* MUCHOS TULIPANES */
 
 for(let i=0;i<80;i++){
 crearTulipan();
 }
 
-/* siguen cayendo */
+/* SIGUEN CAYENDO */
 
 setInterval(()=>{
 crearTulipan();
