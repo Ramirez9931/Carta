@@ -5,12 +5,12 @@ display:flex;
 justify-content:center;
 align-items:center;
 background:linear-gradient(135deg,#ff9a9e,#fad0c4);
-
+background-size:cover;
+background-repeat:no-repeat;
 /* fuente moderna */
 font-family:'Poppins', sans-serif;
 
 overflow:hidden;
-position:fixed;
 width:100%;
 /* mejora visual del texto */
 -webkit-font-smoothing:antialiased;

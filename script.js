@@ -70,17 +70,17 @@ const texto = [
 
 let esMovil = window.innerWidth < 600;
 
-let espacioX = esMovil ? 12 : 30;
-let espacioY = esMovil ? 14 : 35;
-let tamañoCorazon = esMovil ? 12 : 26;
+let espacioX = esMovil ? 16 : 30;
+let espacioY = esMovil ? 18 : 35;
+let tamañoCorazon = esMovil ? 16 : 32;
 
 /* CALCULO PARA CENTRAR */
 
-let anchoTexto = texto[0].length * espacioX;
-
+let lineaMasLarga = Math.max(...texto.map(linea => linea.length));
+let anchoTexto = lineaMasLarga * espacioX;
 let startX = (window.innerWidth - anchoTexto) / 2;
 if(esMovil){
-startX -= 90;
+startX -= 55;
 }
 
 let startY = window.innerHeight / 2 - (esMovil ? 70 : 120);
