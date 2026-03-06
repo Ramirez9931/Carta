@@ -70,9 +70,9 @@ const texto = [
 
 let esMovil = window.innerWidth < 600;
 
-let espacioX = esMovil ? 16 : 30;
-let espacioY = esMovil ? 18 : 35;
-let tamañoCorazon = esMovil ? 16 : 32;
+let espacioX = esMovil ? 18 : 30;
+let espacioY = esMovil ? 20 : 35;
+let tamañoCorazon = esMovil ? 22 : 32;
 
 /* CALCULO PARA CENTRAR */
 
@@ -80,7 +80,7 @@ let lineaMasLarga = Math.max(...texto.map(linea => linea.length));
 let anchoTexto = lineaMasLarga * espacioX;
 let startX = (window.innerWidth - anchoTexto) / 2;
 if(esMovil){
-startX -= 55;
+startX -= 25;
 }
 
 let startY = window.innerHeight / 2 - (esMovil ? 70 : 120);
