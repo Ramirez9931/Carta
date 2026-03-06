@@ -21,12 +21,11 @@ Nunca dejes de mostrar esos lados tan <span class="resaltar">hermosos</span> que
 Esa niña interior <strong>siempre la cuidaré y la amaré</strong> 🌷
 </p>
 `;
-/* ocultar primer botón */
 
+/* ocultar primer botón */
 document.getElementById("boton1").style.display = "none";
 
 /* mostrar botón corazón */
-
 document.getElementById("boton2").style.display = "inline-block";
 
 }
@@ -49,6 +48,9 @@ ayudarte y mucho más día a día 🌷💖
 <strong>AMO SER TU NOVIO</strong> 🥰
 </p>
 `;
+
+/* TEXTO TE AMO CON CORAZONES */
+
 const texto = [
 
 "111 1111     111   1   1  1111",
@@ -59,7 +61,12 @@ const texto = [
 
 ];
 
-let startX = window.innerWidth/2 - (texto[0].length * 45) / 2;
+/* tamaño adaptable según pantalla */
+
+let espacioX = window.innerWidth < 600 ? 25 : 45;
+let espacioY = window.innerWidth < 600 ? 30 : 50;
+
+let startX = window.innerWidth/2 - (texto[0].length * espacioX) / 2;
 let startY = window.innerHeight/2 - 100;
 
 for(let y=0;y<texto.length;y++){
@@ -73,8 +80,8 @@ let corazon = document.createElement("div");
 corazon.className="corazon";
 corazon.innerHTML="❤️";
 
-corazon.style.left = startX + (x*45) + "px";
-corazon.style.top = startY + (y*50) + "px";
+corazon.style.left = startX + (x*espacioX) + "px";
+corazon.style.top = startY + (y*espacioY) + "px";
 
 document.body.appendChild(corazon);
 
