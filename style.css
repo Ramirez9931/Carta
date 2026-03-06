@@ -1,0 +1,145 @@
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+
+/* fuente moderna */
+font-family:'Poppins', sans-serif;
+
+overflow:hidden;
+
+/* mejora visual del texto */
+-webkit-font-smoothing:antialiased;
+-moz-osx-font-smoothing:grayscale;
+}
+
+/* CUADRO */
+
+.container{
+position:absolute;
+text-align:center;
+padding:45px 60px;
+
+background:rgba(255,255,255,0.75);
+backdrop-filter: blur(12px);
+
+border-radius:25px;
+
+box-shadow:
+0 15px 35px rgba(0,0,0,0.15),
+0 5px 15px rgba(0,0,0,0.08);
+
+z-index:2;
+
+transition:all 0.3s ease;
+}
+
+/* pequeño efecto al pasar mouse */
+
+.container:hover{
+transform:translateY(-3px);
+box-shadow:
+0 20px 40px rgba(0,0,0,0.18);
+}
+
+/* TITULO */
+
+h1{
+color:#ff4d6d;
+margin-bottom:10px;
+
+/* mejoras visuales */
+font-weight:700;
+letter-spacing:1px;
+
+text-shadow:0 3px 10px rgba(255,77,109,0.25);
+}
+
+/* texto normal */
+
+p{
+font-size:16px;
+color:#555;
+margin-bottom:25px;
+}
+
+/* BOTON */
+
+button{
+background:linear-gradient(135deg,#ff4d6d,#ff758f);
+
+color:white;
+
+border:none;
+
+padding:12px 28px;
+
+border-radius:25px;
+
+font-size:16px;
+
+font-weight:600;
+
+cursor:pointer;
+
+box-shadow:0 6px 15px rgba(255,77,109,0.4);
+
+transition:all 0.25s ease;
+}
+
+/* efecto hover */
+
+button:hover{
+
+transform:translateY(-2px) scale(1.05);
+
+box-shadow:0 10px 25px rgba(255,77,109,0.6);
+
+}
+
+/* corazones */
+
+.corazon{
+position:absolute;
+font-size:50px;
+animation:flotar 7s linear forwards;
+z-index:5;
+}
+
+@keyframes flotar{
+
+0%{
+transform:translateY(0);
+opacity:1;
+}
+
+100%{
+transform:translateY(-500px);
+opacity:0;
+}
+
+}
+
+/* tulipanes */
+
+.tulipan{
+position:absolute;
+animation:caer linear forwards;
+z-index:0;
+opacity:0.9;
+}
+
+@keyframes caer{
+
+0%{
+transform:translateY(0);
+}
+
+100%{
+transform:translateY(110vh);
+}
+
+}
