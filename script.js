@@ -46,7 +46,8 @@ ayudarte y mucho más día a día 🌷💖
 </p>
 `;
 
-/* TEXTO TE AMO */
+/* TEXTO */
+
 const texto = [
 
 "111 1111",
@@ -56,23 +57,27 @@ const texto = [
 " 1  1111",
 
 "",
-"111   1   111",
-"1  1 1 1 1  1",
-"111  111 111",
-"1  1 1 1 1  1",
-"111  1 1 111"
+" 111  1   1  111",
+"1   1 11 11 1   1",
+"11111 1 1 1 1   1",
+"1   1 1   1 1   1",
+"1   1 1   1  111"
 
 ];
 
-/* TAMAÑO PEQUEÑO PARA TELEFONO */
+/* DETECTAR SI ES TELEFONO */
 
-let espacioX = 12;
-let espacioY = 14;
+let esMovil = window.innerWidth < 600;
+
+let espacioX = esMovil ? 12 : 30;
+let espacioY = esMovil ? 14 : 35;
+let tamañoCorazon = esMovil ? 12 : 26;
+
+/* CALCULO PARA CENTRAR */
 
 let anchoTexto = texto[0].length * espacioX;
-
-let startX = (window.innerWidth - anchoTexto) / 2;
-let startY = window.innerHeight / 2 - 80;
+let startX = (window.innerWidth - anchoTexto) / 2 - (esMovil ? 30 : 0);
+let startY = window.innerHeight / 2 - (esMovil ? 80 : 120);
 
 for(let y=0;y<texto.length;y++){
 
@@ -85,9 +90,7 @@ let corazon = document.createElement("div");
 corazon.className="corazon";
 corazon.innerHTML="❤️";
 
-/* corazones pequeños */
-
-corazon.style.fontSize="12px";
+corazon.style.fontSize = tamañoCorazon + "px";
 
 corazon.style.left = startX + (x*espacioX) + "px";
 corazon.style.top = startY + (y*espacioY) + "px";
