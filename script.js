@@ -49,9 +49,29 @@ ayudarte y mucho más día a día 🌷💖
 </p>
 `;
 
-/* TEXTO TE AMO CON CORAZONES */
+/* detectar teléfono */
 
-const texto = [
+let esTelefono = window.innerWidth < 600;
+
+/* texto con corazones */
+
+const texto = esTelefono ? [
+
+"111 1111",
+" 1  1   ",
+" 1  111 ",
+" 1  1   ",
+" 1  1111",
+
+"        ",
+
+" 111   1   1  1111",
+"1   1  11 11 1    ",
+"11111  1 1 1 1    ",
+"1   1  1   1 1    ",
+"1   1  1   1  1111"
+
+] : [
 
 "111 1111     111   1   1  1111",
 " 1  1       1   1  11 11 1    1",
@@ -61,13 +81,22 @@ const texto = [
 
 ];
 
-/* tamaño adaptable según pantalla */
+/* escala adaptable */
 
-let espacioX = window.innerWidth < 600 ? 25 : 45;
-let espacioY = window.innerWidth < 600 ? 30 : 50;
+let escala = Math.min(window.innerWidth / 900, 1);
 
-let startX = window.innerWidth/2 - (texto[0].length * espacioX) / 2;
-let startY = window.innerHeight/2 - 100;
+let espacioX = 45 * escala;
+let espacioY = 50 * escala;
+
+let tamañoCorazon = 50 * escala;
+
+/* centrado automático */
+
+let anchoTexto = texto[0].length * espacioX;
+let altoTexto = texto.length * espacioY;
+
+let startX = (window.innerWidth - anchoTexto) / 2;
+let startY = (window.innerHeight - altoTexto) / 2;
 
 for(let y=0;y<texto.length;y++){
 
@@ -79,6 +108,8 @@ let corazon = document.createElement("div");
 
 corazon.className="corazon";
 corazon.innerHTML="❤️";
+
+corazon.style.fontSize = tamañoCorazon + "px";
 
 corazon.style.left = startX + (x*espacioX) + "px";
 corazon.style.top = startY + (y*espacioY) + "px";
@@ -110,22 +141,22 @@ tulipan.innerHTML="🌷";
 
 tulipan.style.left = Math.random()*100 + "vw";
 
-/* posición vertical en TODA la pantalla */
+/* posición vertical */
 
 tulipan.style.top = Math.random()*100 + "vh";
 
-/* tamaño aleatorio */
+/* tamaño */
 
 let size = 20 + Math.random()*30;
 tulipan.style.fontSize = size + "px";
 
-/* velocidad de caída */
+/* velocidad */
 
 tulipan.style.animationDuration = (6 + Math.random()*6) + "s";
 
 document.body.appendChild(tulipan);
 
-/* eliminar después */
+/* eliminar */
 
 setTimeout(()=>{
 tulipan.remove();
@@ -133,13 +164,13 @@ tulipan.remove();
 
 }
 
-/* MUCHOS TULIPANES AL INICIO */
+/* muchos tulipanes al inicio */
 
 for(let i=0;i<80;i++){
 crearTulipan();
 }
 
-/* SIGUEN APARECIENDO TODO EL TIEMPO */
+/* siguen cayendo */
 
 setInterval(()=>{
 crearTulipan();
