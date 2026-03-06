@@ -22,10 +22,7 @@ Esa niña interior <strong>siempre la cuidaré y la amaré</strong> 🌷
 </p>
 `;
 
-/* ocultar primer botón */
 document.getElementById("boton1").style.display = "none";
-
-/* mostrar botón corazón */
 document.getElementById("boton2").style.display = "inline-block";
 
 }
@@ -49,17 +46,8 @@ ayudarte y mucho más día a día 🌷💖
 </p>
 `;
 
-/* DETECTAR SI ES TELEFONO */
-
-let esTelefono = window.innerWidth < 600;
-
-/* TEXTO CON CORAZONES */
-
-let texto;
-
-if(esTelefono){
-
-texto = [
+/* TEXTO TE AMO */
+const texto = [
 
 "111 1111",
 " 1  1   ",
@@ -67,45 +55,24 @@ texto = [
 " 1  1   ",
 " 1  1111",
 
-"        ",
-
-" 111   1   1  1111",
-"1   1  11 11 1    ",
-"11111  1 1 1 1    ",
-"1   1  1   1 1    ",
-"1   1  1   1  1111"
-
-];
-
-}else{
-
-texto = [
-
-"111 1111     111   1   1  1111",
-" 1  1       1   1  11 11 1    1",
-" 1  111     11111  1 1 1 1    1",
-" 1  1       1   1  1   1 1    1",
-" 1  1111    1   1  1   1  1111"
+"",
+"111   1   111",
+"1  1 1 1 1  1",
+"111  111 111",
+"1  1 1 1 1  1",
+"111  1 1 111"
 
 ];
 
-}
+/* TAMAÑO PEQUEÑO PARA TELEFONO */
 
-/* TAMAÑOS */
+let espacioX = 12;
+let espacioY = 14;
 
-let espacioX = esTelefono ? 20 : 40;
-let espacioY = esTelefono ? 25 : 45;
-let tamañoCorazon = esTelefono ? 22 : 40;
+let anchoTexto = texto[0].length * espacioX;
 
-/* CALCULAR CENTRO */
-
-let ancho = texto[0].length * espacioX;
-let alto = texto.length * espacioY;
-
-let startX = (window.innerWidth - ancho) / 2;
-let startY = (window.innerHeight - alto) / 2;
-
-/* CREAR CORAZONES */
+let startX = (window.innerWidth - anchoTexto) / 2;
+let startY = window.innerHeight / 2 - 80;
 
 for(let y=0;y<texto.length;y++){
 
@@ -118,7 +85,9 @@ let corazon = document.createElement("div");
 corazon.className="corazon";
 corazon.innerHTML="❤️";
 
-corazon.style.fontSize = tamañoCorazon + "px";
+/* corazones pequeños */
+
+corazon.style.fontSize="12px";
 
 corazon.style.left = startX + (x*espacioX) + "px";
 corazon.style.top = startY + (y*espacioY) + "px";
@@ -162,13 +131,13 @@ tulipan.remove();
 
 }
 
-/* MUCHOS TULIPANES */
+/* MUCHOS TULIPANES AL INICIO */
 
 for(let i=0;i<80;i++){
 crearTulipan();
 }
 
-/* SIGUEN CAYENDO */
+/* SIGUEN APARECIENDO */
 
 setInterval(()=>{
 crearTulipan();
